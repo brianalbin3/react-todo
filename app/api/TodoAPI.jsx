@@ -21,9 +21,7 @@ module.exports = {
 		return $.isArray(todos) ? todos : [];
 	},
 	filterTodos: function (todos, showCompleted, searchText) {
-	console.log('filterTodos');
 		var filteredTodos = todos;
-	console.log("filteredTodos.length="+filteredTodos.length);
 
 		// Filter by showCompleted
 		filteredTodos = filteredTodos.filter((todo) => {
