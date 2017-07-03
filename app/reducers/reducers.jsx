@@ -7,7 +7,7 @@ export var searchTextReducer = (state = '', action) => {
 			return action.searchText;
 		default:
 			return state;
-	}	
+	};
 };
 
 export var showCompletedReducer = (state = false, action) => {
@@ -17,7 +17,7 @@ export var showCompletedReducer = (state = false, action) => {
 		default:
 			return state;
 	}
-}
+};
 
 export var todosReducer = (state = [], action) => {
 	switch(action.type) {
@@ -42,7 +42,10 @@ export var todosReducer = (state = [], action) => {
 						completed: nextCompleted,
 						completedAt: nextCompleted ? moment().unix() : undefined
 					};
-				}	
+				}
+				else {
+					return todo;
+				}
 			});	
 		default:
 			return state;

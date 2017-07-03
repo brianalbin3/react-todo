@@ -76,7 +76,7 @@ describe('TodoAPI', () => {
 				completed: true
 			}
 
-		]
+		];
 
 		it('should return all items if showCompleted is true', () => {
 			var filteredTodos = TodoAPI.filterTodos(todos, true, '');

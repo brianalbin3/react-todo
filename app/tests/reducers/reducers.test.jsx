@@ -24,7 +24,7 @@ describe('Reducers', () => {
 			};
 			var res = reducers.showCompletedReducer(df(true), df(action));
 
-			expect(res).toBe(false);
+			expect(res).toEqual(false);
 		});
 	});
 
