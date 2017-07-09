@@ -40,6 +40,26 @@ export var addTodos = (todos) => {
 	return { type: 'ADD_TODOS', todos };	
 };
 
+export var startAddTodos = () => {
+	return (dispatch, getState) => {
+		var todoRef = firebaseRef.child('todos');
+
+		return todoRef.once('value').then((snapshot) => {
+			var todos = snapshot.val() || {};
+			var parsedTodos = [];
+
+			Object.keys(todos).forEach((todoId) => {
+				parsedTodos.push({
+					id: todoId,
+					...todos[todoId]
+				});
+			});
+			
+			dispatch(addTodos(parsedTodos));
+		})
+	};
+};
+
 export var updateTodo = (id, updates) => {
 	return {
 		type: 'UPDATE_TODO',
