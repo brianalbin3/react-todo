@@ -56,7 +56,7 @@ export var startAddTodos = () => {
 			});
 			
 			dispatch(addTodos(parsedTodos));
-		})
+		});
 	};
 };
 
@@ -72,13 +72,20 @@ export var startToggleTodo = (id, completed) => {
 	return (dispatch, getState)	=> {
 		var todoRef = firebaseRef.child(`todos/${id}`);
 		var updates = {
-			completed: completed,
+			completed,
 			completedAt: completed ? moment().unix() : null
 		};
 
 		return todoRef.update(updates).then(() => {
 			dispatch(updateTodo(id, updates));
 		});
+	};
+};
+
+export var login = (uid) => {
+	return {
+		type: 'LOGIN',
+		uid
 	};
 };
 
@@ -90,6 +97,12 @@ export var startLogin = () => {
 			console.log('Unable to auth', error);
 		});
 	};
+};
+
+export var logout = () => {
+	return {
+		type: 'LOGOUT'
+	};	
 };
 
 export var startLogout = () => {
